@@ -4,7 +4,7 @@ public class Player {
     private String name;
     private int health;
     private int damage;
-    private double xp;
+    private double xp;git 
 
     //~ Constructors ..........................................................
     public Player()
