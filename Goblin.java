@@ -1,15 +1,11 @@
+package terminalTrials;
 public class Goblin extends Enemy{
 
-Final int baseHealth;
-Final int baseDamage;
+final int baseHealth = 50;
+final int baseDamage = 25;
 
-public Goblin(double difficulty, int health, int damage) {
-    this.baseHealt = 50;
-    this.baseDamage = 30;
-    super(health, damage);
-    int health = baseHealth * difficulty;
-    int damage = baseDamage * difficulty;
-
+public Goblin(double difficulty) {
+    super((int)(baseHealth + 5 * difficulty), (int)(baseDamage + 5 * difficulty));
 
 
 

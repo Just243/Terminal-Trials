@@ -1,15 +1,12 @@
-public class Zombie extends Enemy{
-Final int baseDamage;
-final int baseHealth;
+package terminalTrials;
+public class Zombie extends Enemy {
 
-public Zombie(double difficulty,iknt health, int damage) {
-    this.baseDamage = 20;
-    this.baseHealth = 50;
-    super(health, damage);
-    this.health = baseHealth + (5 * difficulty);
-    this.damage = baseDamage + (5 * difficulty);
+final int baseHealth = 75;
+final int baseDamage = 15;
 
-
+public Zombie(double difficultyl) {
+    super((int)(baseHealth + 5 * difficulty),(int)(baseDamage + 5 * difficulty));
+    
 }
 
 

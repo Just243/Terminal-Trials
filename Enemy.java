@@ -1,5 +1,5 @@
-package terminalTrials;
-public class Enemy {
+git pushpackage terminalTrials;
+public class Enemy  {
     //~ Fields ................................................................
     private int health;
     private int damage;
