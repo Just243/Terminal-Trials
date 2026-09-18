@@ -28,7 +28,7 @@ public class Game {
         System.out.println("Hi " + playerName);
         System.out.println();
 
-        player = new Player(playerName, 10, 10, 0); //temp values
+        player = new Player(playerName, 100, 25, 0); //temp values
     }
 
     public void createWave() {
