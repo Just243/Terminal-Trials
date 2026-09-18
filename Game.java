@@ -133,4 +133,10 @@ public class Game {
         System.out.println("You took " + enemies.get(0).getDamage() + "damage and have " + player.getHealth() + " health remaining."); 
         }
     }
+    public void upgrade(){
+        if (this.player.getXP( >= 10){
+            this.player.setHealth() = this.player.getHealth() += 25;
+            this.player.setDamage() = this.player.getDamage() += 25;
+        }
+    }
 }
