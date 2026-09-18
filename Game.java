@@ -116,4 +116,14 @@ public class Game {
                 break;
         }
     }
+    public void enemyAttack(){
+        enemies.get(0).attack(player);
+        if(player.getHealth() <= 0){
+            System.out.println("You took " + enemies.get(0).getDamage() + " damage and were killed by the " + enemies.get(0).getType() + ".");
+            System.exit(0);
+        }
+        else{
+        System.out.println("You took " + enemies.get(0).getDamage() + "damage and have " + player.getHealth() + " health remaining."); 
+        }
+    }
 }

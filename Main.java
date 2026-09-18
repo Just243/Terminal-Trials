@@ -12,6 +12,7 @@ public class Main {
             mainGame.printWave();
             while(mainGame.waveActive()){
                 mainGame.requestPlayerAction();
+                mainGame.enemyAttack();
             }
         }
     }

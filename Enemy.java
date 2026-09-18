@@ -30,7 +30,6 @@ public class Enemy {
 
     public void attack(Player player) {
         player.setHealth(player.getHealth() - damage);
-        System.out.println("You took " + damage + " damage.");
     }
 
     /* 
