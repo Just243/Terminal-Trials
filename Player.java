@@ -47,23 +47,6 @@ public class Player {
         this.xp = xp;
     }
 
-    public void upgrade() {
-        if(this.xp >=10){
-            int choice = 3;
-            while(choice != 1 && choice != 2){
-                System.out.println("Enter 1 to upgrade health or 2 to upgrade damage");
-                Scanner scan = new Scanner(System.in);
-                choice = scan.nextInt();
-            }
-            if(choice == 1){
-                this.health += 25;
-            }
-            else{
-                this.damage += 25;
-            }
-            this.xp -= 10;
-        }
-    }
 
     public void die() {
         this.health = 0;
