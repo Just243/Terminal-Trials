@@ -108,9 +108,9 @@ public class Game {
                 for (Enemy thisEnemy:enemies) {
                     thisEnemy.setHealth(thisEnemy.getHealth() - player.getDamage());
                 }
-                if(enemies.get(currentWave - 1).getHealth() <= 0){
-                    System.out.println("You defeated the " + enemies.get(currentWave - 1).getType() + "!");
-                    enemies.remove(currentWave - 1);
+                if(enemies.get(0).getHealth() <= 0){
+                    System.out.println("You defeated the " + enemies.get(0).getType() + "!");
+                    enemies.remove(0);
                     player.setXP(player.getXP() + 10);
                     player.upgrade();
                 }
@@ -119,18 +119,20 @@ public class Game {
                 int damageTaken = rand.nextInt(5);
                 player.setHealth(player.getHealth() - damageTaken);
                 System.out.println("You fled the battle and took " + damageTaken + " damage.");
-                enemies.remove(currentWave - 1);
+                enemies.remove(0);
                 break;
         }
     }
     public void enemyAttack(){
-        enemies.get(0).attack(player);
-        if(player.getHealth() <= 0){
-            System.out.println("You took " + enemies.get(0).getDamage() + " damage and were killed by the " + enemies.get(0).getType() + ".");
-            System.exit(0);
-        }
-        else{
-        System.out.println("You took " + enemies.get(0).getDamage() + "damage and have " + player.getHealth() + " health remaining."); 
-        }
+        if(enemies.size() > 0){
+         enemies.get(0).attack(player);
+         if(player.getHealth() <= 0){
+              System.out.println("You took " + enemies.get(0).getDamage() + " damage and were killed by the " + enemies.get(0).getType() + ".");
+              System.exit(0);
+            }
+           else{
+          System.out.println("You took " + enemies.get(0).getDamage() + "damage and have " + player.getHealth() + " health remaining."); 
+          }
+       }
     }
 }
