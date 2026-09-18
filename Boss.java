@@ -10,4 +10,5 @@ public class Boss extends Enemy {
     public String getType(){
         return "super giga ultra boss";
     }
+    //test
 }
