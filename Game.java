@@ -99,12 +99,16 @@ public class Game {
                     thisEnemy.setHealth(thisEnemy.getHealth() - player.getDamage());
                 }
                 if(enemies.get(currentWave - 1).getHealth() <= 0){
-                     System.out.println("You defeated the " + enemies.get(currentWave - 1).getType() + "!");
+                    System.out.println("You defeated the " + enemies.get(currentWave - 1).getType() + "!");
                     enemies.remove(currentWave - 1);
+                    player.setXP(player.getXP() + 10);
                 }
                 break;
             case 2: //flee
-                // TODO: code for fleeing. Should it just skip to the next wave? or should it redo the current wave idk
+                int damageTaken = rand.nextInt(5);
+                player.setHealth(player.getHealth() - damageTaken);
+                System.out.println("You fled the battle and took " + damageTaken + " damage.");
+                enemies.remove(currentWave - 1);
                 break;
         }
     }
