@@ -47,8 +47,11 @@ public class Player {
     }
 
     public void upgrade() {
-        this.health += 25;
-        this.damage += 25;
+        if(this.xp >=10){
+            this.health += 25;
+            this.damage += 25;
+            this.xp -= 10;
+        }
     }
 
     public void die() {
