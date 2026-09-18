@@ -9,7 +9,6 @@ public class Game {
     Scanner scan;
     ArrayList<Enemy> enemies;
     Player player;
-
     Random rand = new Random();
 
     //~ Constructors ..........................................................
@@ -96,7 +95,13 @@ public class Game {
 
         switch(playerAction){
             case 1: //attack
-                // TODO: code for attacking
+                for (Enemy thisEnemy:enemies) {
+                    thisEnemy.setHealth(thisEnemy.getHealth() - player.getDamage());
+                }
+                if(enemies.get(currentWave - 1).getHealth() <= 0){
+                     System.out.println("You defeated the " + enemies.get(currentWave - 1).getType() + "!");
+                    enemies.remove(currentWave - 1);
+                }
                 break;
             case 2: //flee
                 // TODO: code for fleeing. Should it just skip to the next wave? or should it redo the current wave idk
