@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class Player {
     //~ Fields ................................................................
     private String name;
@@ -48,8 +49,18 @@ public class Player {
 
     public void upgrade() {
         if(this.xp >=10){
-            this.health += 25;
-            this.damage += 25;
+            int choice = 3;
+            while(choice != 1 && choice != 2){
+                System.out.println("Enter 1 to upgrade health or 2 to upgrade damage");
+                Scanner scan = new Scanner(System.in);
+                choice = scan.nextInt();
+            }
+            if(choice == 1){
+                this.health += 25;
+            }
+            else{
+                this.damage += 25;
+            }
             this.xp -= 10;
         }
     }
