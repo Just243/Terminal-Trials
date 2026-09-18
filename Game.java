@@ -39,7 +39,7 @@ public class Game {
         if(currentWave != totalWaves){
             int randomEnemy = rand.nextInt(2);
 
-            for(int i = rand.nextInt(2)+1; i > 0; i--) {
+            for(int i = 1; i > 0; i--) { // loop for multiple enemies, set to 1 for now
                 enemies.add(
                     switch (randomEnemy) {
                         case 0 -> new Goblin(difficulty);
