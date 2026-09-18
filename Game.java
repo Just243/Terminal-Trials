@@ -73,6 +73,8 @@ public class Game {
         }
         System.out.println();
 
+        System.out.println("Your current health is" + player.getHealth());
+
         System.out.println(bar + "\n");
     }
 
@@ -106,6 +108,7 @@ public class Game {
                     System.out.println("You defeated the " + enemies.get(currentWave - 1).getType() + "!");
                     enemies.remove(currentWave - 1);
                     player.setXP(player.getXP() + 10);
+                    player.upgrade();
                 }
                 break;
             case 2: //flee
