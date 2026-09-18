@@ -1,5 +1,3 @@
-package terminalTrials;
-
 public class Main {
 
     private static Game mainGame;

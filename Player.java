@@ -1,5 +1,3 @@
-package terminalTrials;
-
 public class Player {
     //~ Fields ................................................................
     private String name;

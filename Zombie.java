@@ -1,5 +1,3 @@
-package terminalTrials;
-
 public class Zombie extends Enemy {
 
     static final int baseHealth = 75;

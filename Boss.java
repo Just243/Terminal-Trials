@@ -1,5 +1,3 @@
-package terminalTrials;
-
 public class Boss extends Enemy {
     static final int baseHealth = 300;
     static final int baseDamage = 15;

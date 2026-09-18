@@ -1,5 +1,3 @@
-package terminalTrials;
-
 public class Goblin extends Enemy {
 
     static final int baseHealth = 50;

@@ -1,5 +1,3 @@
-package terminalTrials;
-
 public class Enemy {
     //~ Fields ................................................................
     private int health;
