@@ -20,11 +20,7 @@ public class Game {
         totalWaves = waveCount;
         currentWave = 0;
 
-
-
-
-
-
+        enemies = new ArrayList<Enemy>(); 
     }
 
     //~Public  Methods ........................................................
@@ -32,10 +28,10 @@ public class Game {
         String openingMessage = "Welcome to Termnal Trials. Enter a name for your character to begin";
         System.out.println(openingMessage);
         String playerName = scan.nextLine();
+        System.out.println("Hi " + playerName);
+        System.out.println();
 
         player = new Player(playerName, 10, 10, 0); //temp values
-
-        
     }
 
     public void createWave() {
@@ -59,19 +55,54 @@ public class Game {
         }
     }
 
-
-    public int getCurrentWave() {
-        return this.currentWave;
-    }
-
     public boolean gameActive() {
         return currentWave <= totalWaves;
     }
 
-    public boolean checkStringInput() {
+    public void printWave() {
+        String bar = "------------------";
 
+        System.out.println(bar);
+        System.out.println("Current Wave: " + currentWave + "/" + totalWaves);
+        System.out.println(bar);
+
+        System.out.println("Enemies:");
+        for(Enemy thisEnemy:enemies){
+            System.out.print(thisEnemy.getType() + ", ");
+        }
+        System.out.println();
+
+        System.out.println(bar + "\n");
     }
 
+    public void requestPlayerAction() {
+        int playerAction = 0;
 
+        System.out.println("Choose an option");
+        System.out.println("1. Attack");
+        System.out.println("2. Flee");
+        System.out.println();
+        while(true) {
+            System.out.println("Enter a number from 1-2: ");
+            try {
+                playerAction = Integer.parseInt(scan.nextLine());
+                if(playerAction == 1 || playerAction == 2) {
+                    break;
+                } else {
+                    System.out.println("Invalid choise.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("That is not a number.");
+            }
+        }
 
+        switch(playerAction){
+            case 1: //attack
+                // TODO: code for attacking
+                break;
+            case 2: //flee
+                // TODO: code for fleeing. Should it just skip to the next wave? or should it redo the current wave idk
+                break;
+        }
+    }
 }

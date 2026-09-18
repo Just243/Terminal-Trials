@@ -9,4 +9,9 @@ public class Zombie extends Enemy {
         super((int)(baseHealth + 5 * difficulty),(int)(baseDamage + 5 * difficulty));
         
     }
+
+    @Override 
+    public String getType(){
+        return "Zombie";
+    }
 }
