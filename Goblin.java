@@ -1,5 +1,6 @@
 package terminalTrials;
-public class Goblin extends Enemy{
+
+public class Goblin extends Enemy {
 
 final int baseHealth = 50;
 final int baseDamage = 25;

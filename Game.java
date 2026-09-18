@@ -1,6 +1,8 @@
 package terminalTrials;
 import java.util.Scanner;
+import java.util.ArrayList;
 import java.util.Random;
+
 public class Game {
     //~ Fields ................................................................
     private int totalWaves;
@@ -9,8 +11,10 @@ public class Game {
     ArrayList<Enemy> enemies;
     Player player;
 
+    Random rand = new Random();
+
     //~ Constructors ..........................................................
-    public Game(){
+    public Game() {
         scan = new Scanner(System.in);
         totalWaves = 0;
         currentWave = 1;
@@ -21,37 +25,34 @@ public class Game {
 
 
     }
-    public void newGame()
-    {
+    public void newGame() {
         Game game1 = new Game();
         String openingMessage = "Welcome to Termnal Trials. Enter a name for your character to begin";
         System.out.println(openingMessage);
-        String playerName = scanner.nextLine();
+        String playerName = scan.nextLine();
 
 
 
     }
 
     //~Public  Methods ........................................................
-    public void createWave()
-    {
+    public void createWave() {
         this.totalWaves += 1;
-        this.currentWave += 1
+        this.currentWave += 1;
         int randomEnemy = rand.nextInt(2) +1;
-        double difficutly = this.currentWave;
+        double difficulty = this.currentWave;
         if (randomEnemy == 1)
         {
            Goblin goblin = new Goblin(difficulty);
 
         }
         else{
-            Zombie zombie = new Zombie(dificulty)
+            Zombie zombie = new Zombie(difficulty);
         }
     }
 
 
-    public void getCurrentWave()
-    {
+    public int getCurrentWave() {
         return this.currentWave;
     }
 
@@ -60,9 +61,6 @@ public class Game {
 
     }
 
-
-
-    }
 
 
 }
