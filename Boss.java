@@ -1,12 +1,10 @@
 package terminalTrials;
 
-public class Zombie extends Enemy {
-
-    static final int baseHealth = 75;
+public class Boss extends Enemy {
+    static final int baseHealth = 300;
     static final int baseDamage = 15;
 
-    public Zombie(double difficulty) {
+    public Boss(double difficulty) {
         super((int)(baseHealth + 5 * difficulty),(int)(baseDamage + 5 * difficulty));
-        
     }
 }

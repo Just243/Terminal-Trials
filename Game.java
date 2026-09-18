@@ -1,4 +1,5 @@
 package terminalTrials;
+
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Random;
@@ -14,40 +15,47 @@ public class Game {
     Random rand = new Random();
 
     //~ Constructors ..........................................................
-    public Game() {
+    public Game(int waveCount) {
         scan = new Scanner(System.in);
-        totalWaves = 0;
-        currentWave = 1;
+        totalWaves = waveCount;
+        currentWave = 0;
 
 
 
-
-
-
-    }
-    public void newGame() {
-        Game game1 = new Game();
-        String openingMessage = "Welcome to Termnal Trials. Enter a name for your character to begin";
-        System.out.println(openingMessage);
-        String playerName = scan.nextLine();
 
 
 
     }
 
     //~Public  Methods ........................................................
-    public void createWave() {
-        this.totalWaves += 1;
-        this.currentWave += 1;
-        int randomEnemy = rand.nextInt(2) +1;
-        double difficulty = this.currentWave;
-        if (randomEnemy == 1)
-        {
-           Goblin goblin = new Goblin(difficulty);
+    public void newGame() {
+        String openingMessage = "Welcome to Termnal Trials. Enter a name for your character to begin";
+        System.out.println(openingMessage);
+        String playerName = scan.nextLine();
 
-        }
-        else{
-            Zombie zombie = new Zombie(difficulty);
+        player = new Player(playerName, 10, 10, 0); //temp values
+
+        
+    }
+
+    public void createWave() {
+        this.currentWave += 1;
+        double difficulty = this.currentWave;
+
+        if(currentWave != totalWaves){
+            int randomEnemy = rand.nextInt(2);
+
+            for(int i = rand.nextInt(2)+1; i > 0; i--) {
+                enemies.add(
+                    switch (randomEnemy) {
+                        case 0 -> new Goblin(difficulty);
+                        case 1 -> new Zombie(difficulty);
+                        default -> null;
+                    }
+                );
+            }
+        } else {
+            enemies.add(new Boss(difficulty));
         }
     }
 
@@ -56,8 +64,11 @@ public class Game {
         return this.currentWave;
     }
 
-    public boolean checkStringInput()
-    {
+    public boolean gameActive() {
+        return currentWave <= totalWaves;
+    }
+
+    public boolean checkStringInput() {
 
     }
 
