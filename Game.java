@@ -112,7 +112,7 @@ public class Game {
                     System.out.println("You defeated the " + enemies.get(0).getType() + "!");
                     enemies.remove(0);
                     player.setXP(player.getXP() + 10);
-                    player.upgrade();
+                    this.upgrade();
                 }
                 break;
             case 2: //flee
