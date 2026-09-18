@@ -73,7 +73,11 @@ public class Game {
         }
         System.out.println();
 
-        System.out.println("Your current health is" + player.getHealth());
+    
+
+        System.out.println(bar + "\n");
+
+        System.out.println("Your current health is " + player.getHealth());
 
         System.out.println(bar + "\n");
     }
