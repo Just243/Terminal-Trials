@@ -10,8 +10,9 @@ public class Main {
         while(mainGame.gameActive()){
             mainGame.createWave();
             mainGame.printWave();
-            mainGame.requestPlayerAction();
+            while(mainGame.waveActive()){
+                mainGame.requestPlayerAction();
+            }
         }
     }
-
 }
