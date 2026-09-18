@@ -56,6 +56,10 @@ public class Game {
         return currentWave <= totalWaves;
     }
 
+    public boolean waveActive() {
+        return enemies.size() > 0;
+    }
+
     public void printWave() {
         String bar = "------------------";
 
