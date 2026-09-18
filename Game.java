@@ -136,9 +136,10 @@ public class Game {
        }
     }
     public void upgrade(){
-        if (this.player.getXP( >= 10){
+        if (this.player.getXP() >= 10){
             this.player.setHealth(this.player.getHealth() + 25);
             this.player.setDamage(this.player.getDamage() + 25);
+            this.player.setXP(this.player.getXP()-=10);
             
         }
     }
