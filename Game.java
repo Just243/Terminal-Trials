@@ -112,7 +112,7 @@ public class Game {
                     System.out.println("You defeated the " + enemies.get(0).getType() + "!");
                     enemies.remove(0);
                     player.setXP(player.getXP() + 10);
-                    player.upgrade();
+                    upgrade();
                 }
                 break;
             case 2: //flee
@@ -136,9 +136,9 @@ public class Game {
        }
     }
     public void upgrade(){
-        if (this.player.getXP( >= 10){
-            this.player.setHealth() = this.player.getHealth() += 25;
-            this.player.setDamage() = this.player.getDamage() += 25;
+        if (this.player.getXP() >= 10){
+            player.setHealth(player.getHealth() + 25);
+            player.setDamage(player.getDamage() + 5);
         }
     }
 }
