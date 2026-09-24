@@ -1,6 +1,6 @@
-import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Game {
     //~ Fields ................................................................
@@ -140,5 +140,8 @@ public class Game {
             player.setHealth(player.getHealth() + 25);
             player.setDamage(player.getDamage() + 5);
         }
+    }
+    public int getWave(){
+        return currentWave;
     }
 }

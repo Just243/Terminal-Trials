@@ -9,8 +9,10 @@ public class Main {
 
         while(mainGame.gameActive()){
             mainGame.createWave();
+            if(mainGame.getWave() < 11){
             mainGame.printWave();
-            while(mainGame.waveActive()){
+        }
+            while(mainGame.waveActive() && mainGame.getWave() < 11){
                 mainGame.requestPlayerAction();
                 mainGame.enemyAttack();
             }
