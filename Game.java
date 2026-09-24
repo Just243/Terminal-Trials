@@ -131,7 +131,7 @@ public class Game {
               System.exit(0);
             }
            else{
-          System.out.println("You took " + enemies.get(0).getDamage() + "damage and have " + player.getHealth() + " health remaining."); 
+          System.out.println("You took " + enemies.get(0).getDamage() + " damage and have " + player.getHealth() + " health remaining."); 
           }
        }
     }
