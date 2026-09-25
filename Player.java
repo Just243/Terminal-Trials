@@ -49,7 +49,7 @@ public class Player {
 
 
     public boolean dead() {
-        return this.health == 0;
+        return this.health <= 0;
     }
 
 }

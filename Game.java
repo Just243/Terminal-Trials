@@ -53,7 +53,7 @@ public class Game {
     }
 
     public boolean gameActive() {
-        return currentWave <= totalWaves || this.player.dead();
+        return currentWave <= totalWaves && !this.player.dead();
     }
 
     public boolean waveActive() {
@@ -118,7 +118,12 @@ public class Game {
             case 2: //flee
                 int damageTaken = rand.nextInt(5);
                 player.setHealth(player.getHealth() - damageTaken);
-                System.out.println("You fled the battle and took " + damageTaken + " damage.");
+                if(!this.player.dead()){
+                    System.out.println("You fled the battle and took " + damageTaken + " damage.");
+                }
+                else {
+                System.out.println("You were killed when trying to flee the battle");
+                }
                 enemies.remove(0);
                 break;
         }
