@@ -17,7 +17,11 @@ public class Enemy {
     }
 
     public void die() {
-        System.out.println("Enemy defeated");
+        this.health = 0;
+    }
+
+    public boolean dead() {
+        return this.health <= 0;
     }
 
     public void setHealth(int health) {

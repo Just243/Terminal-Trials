@@ -98,6 +98,34 @@ public class GameTest {
     }
 
     @Test
+    public void testCreateWaveEnemyTypes() {
+        Game goblinGame = new Game(5);
+        goblinGame.rand = fixedRandom(0.0, 0);
+        goblinGame.createWave();
+        assertEquals("Goblin", goblinGame.enemies.get(0).getType());
+
+        Game zombieGame = new Game(5);
+        zombieGame.rand = fixedRandom(0.0, 1);
+        zombieGame.createWave();
+        assertEquals("Zombie", zombieGame.enemies.get(0).getType());
+    }
+
+    @Test
+    public void testCreateWaveNeverAddsNull() {
+        Game game = new Game(50);
+        game.rand = new Random(42);
+
+        for (int i = 0; i < 49; i++) {
+            game.createWave();
+        }
+
+        assertEquals(49 * Game.ENEMIES_PER_WAVE, game.enemies.size());
+        for (Enemy enemy : game.enemies) {
+            assertNotNull(enemy);
+        }
+    }
+
+    @Test
     public void testCreateWaveAddsBossOnFinalWave() {
         Game game = new Game(1);
 
@@ -202,6 +230,39 @@ public class GameTest {
         // Player should gain XP, but not enough to level up yet
         assertEquals(10, game.player.getXP());
         assertEquals(1, game.player.getLevel());
+    }
+
+    @Test
+    public void testKillLevelsUpPlayer() {
+        Game game = new Game(3);
+        game.player = new Player("Test", 100, 25, 10);
+        game.enemies.add(new Enemy(15, 10));
+
+        game.rand = fixedRandom(0.5, 0);
+        game.scan = new Scanner("1\n");
+
+        game.requestPlayerAction();
+
+        assertEquals(2, game.player.getLevel());
+    }
+
+    @Test
+    public void testNoLevelUpAfterBossDefeated() {
+        Game game = new Game(1);
+        game.player = new Player("Test", 100, 25, 10);
+        game.createWave();
+        game.enemies.get(0).setHealth(1);
+
+        game.rand = fixedRandom(0.5, 0);
+        game.scan = new Scanner("1\n");
+
+        game.requestPlayerAction();
+
+        // Boss is dead and XP is awarded, but the game is over so no level up
+        assertFalse(game.waveActive());
+        assertEquals(20, game.player.getXP());
+        assertEquals(1, game.player.getLevel());
+        assertFalse(game.gameActive());
     }
 
     @Test

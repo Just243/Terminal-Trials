@@ -8,8 +8,8 @@ public class ZombieTest {
         double difficulty = 10.0;
         Zombie zombie = new Zombie(difficulty);
 
-        int expectedHealth = (int)(75 + 2 * difficulty);
-        int expectedDamage = (int)(10 + 2 * difficulty);
+        int expectedHealth = (int)(55 + 9 * difficulty);
+        int expectedDamage = (int)(5 + 3 * difficulty);
 
         assertEquals(expectedHealth, zombie.getHealth());
         assertEquals(expectedDamage, zombie.getDamage());
@@ -25,15 +25,15 @@ public class ZombieTest {
     public void testLowDifficultyValues() {
         Zombie zombie = new Zombie(1.0);
 
-        assertEquals(77, zombie.getHealth());
-        assertEquals(12, zombie.getDamage());
+        assertEquals(64, zombie.getHealth());
+        assertEquals(8, zombie.getDamage());
     }
 
     @Test
     public void testHighDifficultyValues() {
         Zombie zombie = new Zombie(50.0);
 
-        assertEquals(175, zombie.getHealth());
-        assertEquals(110, zombie.getDamage());
+        assertEquals(505, zombie.getHealth());
+        assertEquals(155, zombie.getDamage());
     }
 }

@@ -45,11 +45,24 @@ public class EnemyTest {
     }
 
     @Test
-    public void testDieDoesNotChangeHealth() {
+    public void testDie() {
         Enemy enemy = new Enemy(100, 20);
 
-        enemy.die(); // prints message, but does not modify health
+        enemy.die();
 
-        assertEquals(100, enemy.getHealth());
+        assertEquals(0, enemy.getHealth());
+        assertTrue(enemy.dead());
+    }
+
+    @Test
+    public void testDead() {
+        Enemy enemy = new Enemy(100, 20);
+        assertFalse(enemy.dead());
+
+        enemy.setHealth(0);
+        assertTrue(enemy.dead());
+
+        enemy.setHealth(-10);
+        assertTrue(enemy.dead());
     }
 }

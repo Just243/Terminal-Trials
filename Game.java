@@ -12,6 +12,7 @@ public class Game {
     static final double MAX_HIT_MULTIPLIER = 1.2;  // of their damage stat
     static final double FLEE_SUCCESS_CHANCE = 0.5;
     static final int MAX_FLEE_DAMAGE = 4;
+    static final int ENEMIES_PER_WAVE = 1;
 
     //~ Fields ................................................................
     private int totalWaves;
@@ -58,16 +59,8 @@ public class Game {
         double difficulty = this.currentWave;
 
         if(!isFinalWave()){
-            int randomEnemy = rand.nextInt(2);
-
-            for(int i = 1; i > 0; i--) { // loop for multiple enemies, set to 1 for now
-                enemies.add(
-                    switch (randomEnemy) {
-                        case 0 -> new Goblin(difficulty);
-                        case 1 -> new Zombie(difficulty);
-                        default -> null;
-                    }
-                );
+            for(int i = 0; i < ENEMIES_PER_WAVE; i++) {
+                enemies.add(randomEnemy(difficulty));
             }
         } else {
             enemies.add(new Boss(difficulty));
@@ -212,12 +205,18 @@ public class Game {
                 + " (" + Math.max(0, thisEnemy.getHealth()) + " health left).");
         }
         for (int i = enemies.size() - 1; i >= 0; i--) {
-            if(enemies.get(i).getHealth() <= 0){
-                System.out.println("You defeated the " + enemies.get(i).getType() + "! (+" + XP_PER_KILL + " XP)");
+            Enemy thisEnemy = enemies.get(i);
+            if(thisEnemy.dead()){
+                thisEnemy.die();
+                System.out.println("You defeated the " + thisEnemy.getType() + "! (+" + XP_PER_KILL + " XP)");
                 enemies.remove(i);
                 player.setXP(player.getXP() + XP_PER_KILL);
-                upgrade();
             }
+        }
+
+        // No point leveling up once the boss is beaten and the game is over
+        if(!(isFinalWave() && enemies.isEmpty())){
+            upgrade();
         }
     }
 
@@ -235,6 +234,13 @@ public class Game {
             System.out.println("You were killed when trying to flee the battle");
         }
         enemies.clear();
+    }
+
+    private Enemy randomEnemy(double difficulty) {
+        if(rand.nextInt(2) == 0){
+            return new Goblin(difficulty);
+        }
+        return new Zombie(difficulty);
     }
 
     private int rollHitDamage() {

@@ -8,8 +8,8 @@ public class GoblinTest {
         double difficulty = 10.0;
         Goblin goblin = new Goblin(difficulty);
 
-        int expectedHealth = (int)(50 + 2 * difficulty);
-        int expectedDamage = (int)(15 + 2 * difficulty);
+        int expectedHealth = (int)(35 + 7 * difficulty);
+        int expectedDamage = (int)(8 + 3 * difficulty);
 
         assertEquals(expectedHealth, goblin.getHealth());
         assertEquals(expectedDamage, goblin.getDamage());
@@ -25,15 +25,15 @@ public class GoblinTest {
     public void testLowDifficultyValues() {
         Goblin goblin = new Goblin(1.0);
 
-        assertEquals(52, goblin.getHealth());
-        assertEquals(17, goblin.getDamage());
+        assertEquals(42, goblin.getHealth());
+        assertEquals(11, goblin.getDamage());
     }
 
     @Test
     public void testHighDifficultyValues() {
         Goblin goblin = new Goblin(50.0);
 
-        assertEquals(150, goblin.getHealth());
-        assertEquals(115, goblin.getDamage());
+        assertEquals(385, goblin.getHealth());
+        assertEquals(158, goblin.getDamage());
     }
 }
