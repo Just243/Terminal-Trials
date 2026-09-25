@@ -8,12 +8,12 @@ public class Main {
         mainGame.newGame();
 
         while(mainGame.gameActive()){
-            mainGame.createWave();
-            mainGame.printWave();
-            while(mainGame.waveActive() && !mainGame.playerDead()){
-                mainGame.requestPlayerAction();
-                mainGame.enemyAttack();
+            if(!mainGame.waveActive()){
+                mainGame.createWave();
+                mainGame.printWave();
             }
+            mainGame.requestPlayerAction();
+            mainGame.enemyAttack();
         }
 
         mainGame.printEndMessage();

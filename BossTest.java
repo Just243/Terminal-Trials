@@ -8,8 +8,8 @@ public class BossTest {
         double difficulty = 10.0;
         Boss boss = new Boss(difficulty);
 
-        int expectedHealth = (int)(300 + 5 * difficulty);
-        int expectedDamage = (int)(15 + 5 * difficulty);
+        int expectedHealth = (int)(200 + 2 * difficulty);
+        int expectedDamage = (int)(15 + 2 * difficulty);
 
         assertEquals(expectedHealth, boss.getHealth());
         assertEquals(expectedDamage, boss.getDamage());
@@ -25,15 +25,15 @@ public class BossTest {
     public void testLowDifficultyValues() {
         Boss boss = new Boss(1.0);
 
-        assertEquals(305, boss.getHealth());
-        assertEquals(20, boss.getDamage());
+        assertEquals(202, boss.getHealth());
+        assertEquals(17, boss.getDamage());
     }
 
     @Test
     public void testHighDifficultyValues() {
         Boss boss = new Boss(50.0);
 
-        assertEquals(550, boss.getHealth());
-        assertEquals(265, boss.getDamage());
+        assertEquals(300, boss.getHealth());
+        assertEquals(115, boss.getDamage());
     }
 }

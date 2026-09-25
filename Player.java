@@ -4,6 +4,7 @@ public class Player {
     private int health;
     private int damage;
     private double xp;
+    private int level;
 
     //~ Constructors ..........................................................
     public Player(String name, int health, int damage, double xp) {
@@ -11,6 +12,7 @@ public class Player {
         this.health = health;
         this.damage = damage;
         this.xp = xp;
+        this.level = 1;
     }
 
     //~Public  Methods ........................................................
@@ -30,6 +32,10 @@ public class Player {
         return this.xp;
     }
 
+    public int getLevel() {
+        return this.level;
+    }
+
     public void setName(String character) {
         this.name = character;
     }
@@ -44,6 +50,10 @@ public class Player {
 
     public void setXP(double xp) {
         this.xp = xp;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
 
     public void die() {

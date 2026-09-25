@@ -65,4 +65,13 @@ public class PlayerTest {
         p.setHealth(-5);
         assertTrue(p.dead());
     }
+
+    @Test
+    public void testLevel() {
+        Player p = new Player("Bob", 80, 10, 5.0);
+        assertEquals(1, p.getLevel());
+
+        p.setLevel(4);
+        assertEquals(4, p.getLevel());
+    }
 }
