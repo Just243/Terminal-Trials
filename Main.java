@@ -9,13 +9,13 @@ public class Main {
 
         while(mainGame.gameActive()){
             mainGame.createWave();
-            if(mainGame.getWave() < 11){
             mainGame.printWave();
-        }
-            while(mainGame.waveActive() && mainGame.getWave() < 11){
+            while(mainGame.waveActive() && !mainGame.playerDead()){
                 mainGame.requestPlayerAction();
                 mainGame.enemyAttack();
             }
         }
+
+        mainGame.printEndMessage();
     }
 }

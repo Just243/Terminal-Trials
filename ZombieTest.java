@@ -1,3 +1,6 @@
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
 public class ZombieTest {
 
     @Test
@@ -6,7 +9,7 @@ public class ZombieTest {
         Zombie zombie = new Zombie(difficulty);
 
         int expectedHealth = (int)(75 + 5 * difficulty);
-        int expectedDamage = (int)(15 + 5 * difficulty);
+        int expectedDamage = (int)(10 + 5 * difficulty);
 
         assertEquals(expectedHealth, zombie.getHealth());
         assertEquals(expectedDamage, zombie.getDamage());
@@ -23,7 +26,7 @@ public class ZombieTest {
         Zombie zombie = new Zombie(1.0);
 
         assertEquals(80, zombie.getHealth());
-        assertEquals(20, zombie.getDamage());
+        assertEquals(15, zombie.getDamage());
     }
 
     @Test
@@ -31,6 +34,6 @@ public class ZombieTest {
         Zombie zombie = new Zombie(50.0);
 
         assertEquals(325, zombie.getHealth());
-        assertEquals(265, zombie.getDamage());
+        assertEquals(260, zombie.getDamage());
     }
 }

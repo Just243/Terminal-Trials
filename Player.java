@@ -1,4 +1,3 @@
-import java.util.Scanner;
 public class Player {
     //~ Fields ................................................................
     private String name;
@@ -47,6 +46,9 @@ public class Player {
         this.xp = xp;
     }
 
+    public void die() {
+        this.health = 0;
+    }
 
     public boolean dead() {
         return this.health <= 0;

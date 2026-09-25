@@ -1,3 +1,6 @@
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
 public class GoblinTest {
 
     @Test
@@ -6,7 +9,7 @@ public class GoblinTest {
         Goblin goblin = new Goblin(difficulty);
 
         int expectedHealth = (int)(50 + 5 * difficulty);
-        int expectedDamage = (int)(25 + 5 * difficulty);
+        int expectedDamage = (int)(15 + 5 * difficulty);
 
         assertEquals(expectedHealth, goblin.getHealth());
         assertEquals(expectedDamage, goblin.getDamage());
@@ -23,7 +26,7 @@ public class GoblinTest {
         Goblin goblin = new Goblin(1.0);
 
         assertEquals(55, goblin.getHealth());
-        assertEquals(30, goblin.getDamage());
+        assertEquals(20, goblin.getDamage());
     }
 
     @Test
@@ -31,6 +34,6 @@ public class GoblinTest {
         Goblin goblin = new Goblin(50.0);
 
         assertEquals(300, goblin.getHealth());
-        assertEquals(275, goblin.getDamage());
+        assertEquals(265, goblin.getDamage());
     }
 }

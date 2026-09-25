@@ -1,11 +1,16 @@
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import java.util.Random;
+import java.util.Scanner;
+
 public class GameTest {
 
     @Test
     public void testConstructorInitializesFields() {
         Game game = new Game(5);
 
-        assertEquals(5, game.totalWaves);
-        assertEquals(0, game.currentWave);
+        assertEquals(5, game.getTotalWaves());
+        assertEquals(0, game.getWave());
         assertTrue(game.enemies.isEmpty());
     }
 
@@ -34,7 +39,7 @@ public class GameTest {
 
         game.createWave();
 
-        assertEquals(1, game.currentWave);
+        assertEquals(1, game.getWave());
         assertEquals(1, game.enemies.size());
 
         String type = game.enemies.get(0).getType();
@@ -47,7 +52,7 @@ public class GameTest {
 
         game.createWave();
 
-        assertEquals(1, game.currentWave);
+        assertEquals(1, game.getWave());
         assertEquals(1, game.enemies.size());
         assertEquals("super giga ultra boss", game.enemies.get(0).getType());
     }
@@ -55,12 +60,28 @@ public class GameTest {
     @Test
     public void testGameActive() {
         Game game = new Game(3);
+        game.player = new Player("Test", 100, 25, 0);
 
         assertTrue(game.gameActive());
 
-        game.currentWave = 4;
+        // Still active until the final wave has been played
+        game.createWave();
+        game.createWave();
+        assertTrue(game.gameActive());
+
+        game.createWave();
+        assertFalse(game.gameActive());
+    }
+
+    @Test
+    public void testGameNotActiveWhenPlayerDead() {
+        Game game = new Game(3);
+        game.player = new Player("Test", 100, 25, 0);
+
+        game.player.die();
 
         assertFalse(game.gameActive());
+        assertTrue(game.playerDead());
     }
 
     @Test
@@ -118,15 +139,16 @@ public class GameTest {
         game.player = new Player("Test", 100, 25, 0);
         game.enemies.add(new Enemy(50, 10));
 
-        // Predictable flee damage
+        // Predictable flee damage: a Random with the same seed
+        // produces the same first value
         game.rand = new Random(0);
+        int expectedDamage = new Random(0).nextInt(5);
 
         game.scan = new Scanner("2\n");
 
         game.requestPlayerAction();
 
-        // Damage taken should match predictable random
-        assertEquals(100 - game.rand.nextInt(5), game.player.getHealth());
+        assertEquals(100 - expectedDamage, game.player.getHealth());
 
         // Enemy removed
         assertEquals(0, game.enemies.size());
@@ -142,6 +164,30 @@ public class GameTest {
         game.enemyAttack();
 
         assertEquals(90, game.player.getHealth());
+    }
+
+    @Test
+    public void testEnemyAttackCanKillPlayer() {
+        Game game = new Game(3);
+
+        game.player = new Player("Test", 5, 25, 0);
+        game.enemies.add(new Enemy(50, 10));
+
+        // Should not exit the program, just leave the player dead
+        game.enemyAttack();
+
+        assertTrue(game.playerDead());
+    }
+
+    @Test
+    public void testEnemyAttackWithNoEnemies() {
+        Game game = new Game(3);
+
+        game.player = new Player("Test", 100, 25, 0);
+
+        game.enemyAttack();
+
+        assertEquals(100, game.player.getHealth());
     }
 
     @Test
