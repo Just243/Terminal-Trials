@@ -28,14 +28,13 @@ java Main
 
 ## Running the tests
 
-The tests use JUnit 5. In VS Code with the Extension Pack for Java, open
-the Testing panel and click **Run Tests**.
+The tests use JUnit 5, which is included in `lib/`. In VS Code with the
+Extension Pack for Java, open the Testing panel and click **Run Tests**.
+VS Code picks up the jar in `lib/` automatically.
 
-From the command line, download the
-[JUnit Platform Console Standalone](https://central.sonatype.com/artifact/org.junit.platform/junit-platform-console-standalone)
-jar, then run:
+From the command line:
 
 ```bash
-javac -cp junit-platform-console-standalone.jar *.java
-java -jar junit-platform-console-standalone.jar -cp . --scan-class-path
+javac -d bin -cp lib/junit-platform-console-standalone-1.14.4.jar *.java
+java -jar lib/junit-platform-console-standalone-1.14.4.jar execute -cp bin --scan-class-path
 ```
