@@ -53,7 +53,7 @@ public class Game {
     }
 
     public boolean gameActive() {
-        return currentWave <= totalWaves;
+        return currentWave <= totalWaves || this.player.dead();
     }
 
     public boolean waveActive() {

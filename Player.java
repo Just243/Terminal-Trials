@@ -48,8 +48,8 @@ public class Player {
     }
 
 
-    public void die() {
-        this.health = 0;
+    public boolean dead() {
+        return this.health == 0;
     }
 
 }
